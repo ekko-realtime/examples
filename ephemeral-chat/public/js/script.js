@@ -3,11 +3,9 @@ const message = `Client: front end of user-app opened in browser`;
 const line = new Array(message.length).fill("-").join("");
 console.log(`${line}\n${message}\n${line}`);
 
-
-
 // Create ekko instance
 const ekko = new Ekko({
-  host: "http://localhost:3000/",
+  host: "http://ekko-ekkos-115U7WQ0664O1-91224527.me-south-1.elb.amazonaws.com",
   uuid: "whateverWeWant",
 });
 
