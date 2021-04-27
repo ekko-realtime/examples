@@ -1,8 +1,8 @@
 const ekko = new Ekko({
-  appName: "app1",
-  host: "http://ekko-ekkos-wrf81w45rshv-682775450.us-east-2.elb.amazonaws.com/",
+  appName: "app_1",
+  host: "http://localhost:3000/",
   jwt:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiYXBwMSIsImFkbWluIjp0cnVlfQ.1bSLFJ2NBsxPtCEUEET6VvmM2DYHFa480JUZF9Xme60",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiYXBwXzEiLCJhZG1pbiI6dHJ1ZX0.3lLShIXVGN4w5JgON61QRHIDjierO_72Xti30L7aF_E",
 });
 
 ekko.subscribe({ channels: ["channel_1"] });
