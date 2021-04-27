@@ -7,7 +7,7 @@ console.log(`${line}\n${message}\n${line}`);
 
 // Create ekko instance
 const ekko = new Ekko({
-  host: "http://localhost:3000/",
+  host: "http://ekko-ekkos-wrf81w45rshv-682775450.us-east-2.elb.amazonaws.com/",
   uuid: "whateverWeWant",
 });
 
