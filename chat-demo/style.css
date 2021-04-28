@@ -1,7 +1,8 @@
 :root {
   --whiteish: #fff;
   --blackish: #333;
-  --gray: #eee;
+  --gray: #999;
+  --gray-light: #eee;
   --yellow: rgba(253, 187, 45, 1);
   --teal: rgba(34, 193, 195, 1);
   --yellow-light: rgba(253, 187, 45, 0.25);
@@ -72,12 +73,12 @@ ul {
 }
 
 #channels li:hover {
-  background-color: var(--gray);
+  background-color: var(--gray-light);
   cursor: pointer;
 }
 
 #channels .selected {
-  background-color: var(--gray);
+  background-color: var(--gray-light);
   cursor: default;
   font-weight: bold;
 }
@@ -114,16 +115,17 @@ ul {
   display: flex;
   flex: 0 0 3rem;
   font-weight: bold;
+  font-size: 3rem;
   justify-content: center;
-  height: 3rem;
+  height: 1rem;
 }
 
 .me .identity {
-  background-color: var(--yellow);
+  /* background-color: var(--yellow); */
 }
 
 .you .identity {
-  background-color: var(--teal);
+  /* background-color: var(--teal); */
 }
 
 .text {
@@ -166,12 +168,19 @@ ul {
 
 #chat form input[type="submit"] {
   background: var(--teal);
-  background: linear-gradient(135deg, var(--teal) 0%, var(--yellow) 100%);
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    315deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
   border-left: 1px solid var(--blackish);
   color: var(--whiteish);
   cursor: pointer;
   font-size: 1.5rem;
   flex: 0 0 3rem;
+  /* box-shadow: var(--whiteish) 0 0 1rem; */
 }
 
 /* Config */

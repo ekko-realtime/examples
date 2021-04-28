@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const ekko = new Ekko({
     appName: "app_1",
-    host: "http://localhost:3000/",
+    host:
+      "http://ekko-ekkos-1C839Z1IAB8QW-2020275697.us-east-2.elb.amazonaws.com/",
     jwt:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiYXBwXzEiLCJhZG1pbiI6dHJ1ZX0.3lLShIXVGN4w5JgON61QRHIDjierO_72Xti30L7aF_E",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiYXBwXzEiLCJhZG1pbiI6dHJ1ZX0.Yc2RZxMZYBNjLQnhGdWaeF-gwrajCRU2kExGQr13YGk",
   });
 
   ekko.subscribe({
