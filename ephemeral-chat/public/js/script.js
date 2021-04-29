@@ -3,12 +3,12 @@ const message = `Client: front end of user-app opened in browser`;
 const line = new Array(message.length).fill("-").join("");
 console.log(`${line}\n${message}\n${line}`);
 
-
-
 // Create ekko instance
 const ekko = new Ekko({
-  host: "http://ekko-ekkos-wrf81w45rshv-682775450.us-east-2.elb.amazonaws.com/",
-  uuid: "whateverWeWant",
+  appName: "app_1",
+  host: "http://localhost:3000/",
+  jwt:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiYXBwXzEiLCJhZG1pbiI6dHJ1ZX0.3lLShIXVGN4w5JgON61QRHIDjierO_72Xti30L7aF_E",
 });
 
 // TODO: remove auto subscribe to balloon channel
