@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     host:
       "http://ekko-ekkos-1C839Z1IAB8QW-2020275697.us-east-2.elb.amazonaws.com/",
     jwt:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiYXBwXzEiLCJhZG1pbiI6dHJ1ZX0.Yc2RZxMZYBNjLQnhGdWaeF-gwrajCRU2kExGQr13YGk",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiYXBwXzEiLCJhZG1pbiI6dHJ1ZX0.VFCsrQRasVDfSi-0jlP8knBtZe6dE3DOPgjchMMViQU",
   });
 
   ekko.subscribe({
