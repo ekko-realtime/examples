@@ -108,7 +108,7 @@ form.addEventListener("submit", (event) => {
   const message = {
     type: "message",
     text: text,
-    emoji: getEmoji(),
+    emoji: currentEmoji,
   };
 
   channelNames.forEach((channel) => {
@@ -121,13 +121,24 @@ form.addEventListener("submit", (event) => {
 
 function handleTextMessage({ message, channel, uuid }) {
   const messagesBox = document.querySelector(`.messages.${channel}`);
-  const className = uuid === ekko.uuid ? "mine" : "yours";
-  const emoji = message.emoji;
+  let className = "yours";
+  let emoji = message.emoji;
+  const textOnly = /[a-z0-9]+/i.test(emoji);
+  let textOrEmoji = "";
   const text = message.text;
+
+  if (textOnly) {
+    textOrEmoji = "textOnly";
+  }
+
+  if (uuid === ekko.uuid) {
+    className = "mine";
+    emoji = currentEmoji;
+  }
 
   const messageHTML = `
   <dl class="message ${className}">
-    <dt data-uuid="${uuid}">${emoji}</dt>
+    <dt data-uuid="${uuid}" class="${textOrEmoji}">${emoji}</dt>
     <dd>${text}</dd>
   </dl>
   `;
@@ -152,13 +163,36 @@ emoji.addEventListener("blur", () => {
 });
 
 const handleEmojiMessage = (event) => {
+  const emoji = event.message.emoji;
+  const textOnly = /[a-z0-9]+/i.test(emoji);
   const emojiMessages = document.querySelectorAll(
     `dt[data-uuid="${event.uuid}"]`
   );
-
   emojiMessages.forEach((emojiMessage) => {
-    emojiMessage.innerHTML = event.message.emoji;
+    emojiMessage.classList.remove("textOnly");
+    emojiMessage.innerHTML = emoji;
+
+    if (textOnly) {
+      emojiMessage.classList.add("textOnly");
+    }
   });
+  updateEmojiHistory(event);
+};
+
+const updateEmojiHistory = (event) => {
+  const sessionMessages = sessionStorage.getItem("messages");
+  let messages = [];
+  if (sessionMessages) {
+    messages = JSON.parse(sessionMessages).messages;
+  }
+  messages.map((message) => {
+    if (message.uuid === event.uuid) {
+      message.message.emoji = event.message.emoji;
+    }
+    return message;
+  });
+
+  sessionStorage.setItem("messages", JSON.stringify({ messages }));
 };
 
 clear.addEventListener("click", (event) => {
@@ -177,10 +211,6 @@ function scrollToBottom() {
 
 const clearInput = () => {
   input.value = "";
-};
-
-const getEmoji = () => {
-  return emoji.value;
 };
 
 function setEmoji() {
