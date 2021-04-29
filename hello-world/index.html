@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World</title>
+    <style>
+      ul {
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+      }
+
+      dt {
+        float: left;
+        font-weight: bold;
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <input id="input" type="text" placeholder="Enter greeting" size="30" />
+      <input type="submit" value="Send Greeting!" />
+    </form>
+    <ul id="messages"></ul>
+    <script src="https://d3irfuxwybyrt2.cloudfront.net/ekko-client-v2.1.0.js"></script>
+    <script>
+      const form = document.getElementById("form");
+      const input = document.getElementById("input");
+      const messages = document.getElementById("messages");
+
+      const ekko = new Ekko({
+        host:
+          "http://ekko-ekkos-1C839Z1IAB8QW-2020275697.us-east-2.elb.amazonaws.com/",
+        jwt:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiaGVsbG8td29ybGQiLCJhZG1pbiI6dHJ1ZX0.6oDnYF4WN1tZ_ttD9izlOGFSVvOrCibTGAEnV-r-v7M",
+        appName: "hello-world",
+        uuid: "ReplaceWithYourClientIdentifier",
+      });
+
+      ekko.subscribe({ channels: ["greeting"] });
+      ekko.addListener({
+        message: (ekkoEvent) => {
+          addMessage(ekkoEvent);
+        },
+        status: (ekkoEvent) => {
+          addStatus(ekkoEvent.message);
+        },
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        ekko.publish({
+          channel: "greeting",
+          message: { text: input.value },
+        });
+      });
+
+      const addMessage = ({ channel, message, uuid }) => {
+        const messageHTML = `
+          <li>
+            <dl>
+              <dt>Event Type:</dt>
+              <dd>Message</dd>
+              <dt>Channel:</dt>
+              <dd>${channel}</dd>
+              <dt>Publisher:</dt>
+              <dd>${uuid}</dd>
+              <dt>Greeting:</dt>
+              <dd>${message.text}</dd>
+            </dl>
+          </li>
+        `;
+        messages.innerHTML = messages.innerHTML + messageHTML;
+      };
+
+      const addStatus = ({ app, event }) => {
+        const statusHTML = `
+          <li>
+            <dl>
+              <dt>Event Type:</dt>
+              <dd>Status</dd>
+              <dt>App Name:</dt>
+              <dd>${app}</dd>
+              <dt>Event Message:</dt>
+              <dd>${event}</dd>
+              
+            </dl>
+          </li>
+        `;
+        messages.innerHTML = messages.innerHTML + statusHTML;
+      };
+    </script>
+  </body>
+</html>
