@@ -24,18 +24,16 @@
       <input type="submit" value="Send Greeting!" />
     </form>
     <ul id="messages"></ul>
-    <script src="https://d3irfuxwybyrt2.cloudfront.net/ekko-client-v2.1.0.js"></script>
+    <script src="https://d3irfuxwybyrt2.cloudfront.net/ekko-client-v2.2.1.js"></script>
     <script>
       const form = document.getElementById("form");
       const input = document.getElementById("input");
       const messages = document.getElementById("messages");
 
       const ekko = new Ekko({
-        host:
-          "http://ekko-ekkos-1C839Z1IAB8QW-2020275697.us-east-2.elb.amazonaws.com/",
-        jwt:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiaGVsbG8td29ybGQiLCJhZG1pbiI6dHJ1ZX0.6oDnYF4WN1tZ_ttD9izlOGFSVvOrCibTGAEnV-r-v7M",
-        appName: "hello-world",
+        host: "!!!EnterHostEndpoint",
+        jwt: "!!!EnterJwtKey",
+        appName: "helloworld",
         uuid: "ReplaceWithYourClientIdentifier",
       });
 
