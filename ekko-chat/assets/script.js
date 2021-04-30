@@ -14,8 +14,10 @@ const channelInfo = {
 
 // ekko Initialization
 const appName = "ekko-chat";
-const host = "!!!EnterHostEndpoint";
-const jwt = "!!!EnterJwtKey";
+const host =
+  "http://ekko-ekkos-1JK7FBDLWD4G0-283235194.us-east-2.elb.amazonaws.com";
+const jwt =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsImFwcE5hbWUiOiJla2tvLWNoYXQiLCJpYXQiOjE2MTk3NDk2MDB9.L3qsPxSpm5hj1EfYm23H9bSIf5OtiSU0UXbu4Y0lZiQ";
 const uuid = sessionStorage.getItem("uuid"); // Try to get uuid from browser session. ekko will asign a random one if none exists
 const ekko = new Ekko({ appName, host, jwt, uuid });
 
