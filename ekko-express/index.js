@@ -3,12 +3,10 @@ const app = express();
 const port = 3000;
 const Ekko = require("ekko-realtime-client");
 const ekko = new Ekko({
-  host:
-    "http://ekko-ekkos-1C839Z1IAB8QW-2020275697.us-east-2.elb.amazonaws.com/",
-  jwt:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiaGVsbG8td29ybGQiLCJhZG1pbiI6dHJ1ZX0.6oDnYF4WN1tZ_ttD9izlOGFSVvOrCibTGAEnV-r-v7M",
-  appName: "hello-world",
-  uuid: "ReplaceWithYourClientIdentifier",
+  host: "myEkkoServerEndpoint",
+  jwt: "myAppJWT",
+  appName: "ekko-express",
+  uuid: "myUniqueUUID",
 });
 
 ekko.subscribe({ channels: ["greeting"] });
