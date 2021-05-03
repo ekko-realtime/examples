@@ -5,7 +5,7 @@ const Ekko = require("ekko-realtime-client");
 const ekko = new Ekko({
   host: "myEkkoServerEndpoint",
   jwt: "myAppJWT",
-  appName: "ekko-express",
+  appName: "express-demo",
   uuid: "myUniqueUUID",
 });
 

@@ -13,7 +13,7 @@ const channelInfo = {
 };
 
 // ekko Initialization
-const appName = "ekko-chat";
+const appName = "chat-demo";
 const host = "myEkkoServerEndpoint";
 const jwt = "myAppJWT";
 const uuid = sessionStorage.getItem("uuid") || "myUniqueUUID"; // Try to get uuid from browser session. ekko will asign a random one if none exists
