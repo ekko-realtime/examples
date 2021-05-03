@@ -31,10 +31,10 @@
       const messages = document.getElementById("messages");
 
       const ekko = new Ekko({
-        host: "!!!EnterHostEndpoint",
-        jwt: "!!!EnterJwtKey",
-        appName: "helloworld",
-        uuid: "ReplaceWithYourClientIdentifier",
+        host: "myEkkoServerEndpoint",
+        jwt: "myAppJWT",
+        appName: "ekko-express",
+        uuid: "myUniqueUUID",
       });
 
       ekko.subscribe({ channels: ["greeting"] });
