@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "ekko-realtime-client": "^2.1.2",
+    "ekko-realtime-client": "^2.2.4",
     "express": "^4.17.1"
   }
 }

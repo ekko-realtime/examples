@@ -15,7 +15,10 @@ ekko.addListener({
     addMessage(ekkoEvent);
   },
   status: (ekkoEvent) => {
-    addStatus(ekkoEvent.message);
+    addStatus(ekkoEvent);
+  },
+  presence: (ekkoEvent) => {
+    addStatus(ekkoEvent);
   },
 });
 
@@ -23,25 +26,44 @@ let counter = 0;
 setInterval(() => {
   ekko.publish({
     channel: "greeting",
-    message: { text: `Hello world! (${counter})` },
+    message: { text: `Hello world! ${counter}` },
   });
 
   counter++;
 }, 3000);
 
-const addMessage = ({ channel, message, uuid }) => {
+const logger = (params) => {
   console.log();
-  console.log("Event Type:  Message");
-  console.log("   Channel: ", channel);
-  console.log(" Publisher: ", uuid);
-  console.log("   Message: ", message);
+  Object.entries(params).forEach(([key, value]) => {
+    console.log(`${key}: ${value}`);
+  });
 };
 
-const addStatus = ({ app, event }) => {
-  console.log();
-  console.log("Event Type:  Status");
-  console.log("  App Name: ", app);
-  console.log("   Message: ", event);
+// Ekko Callbacks
+const addMessage = ({ channel, message, uuid }) => {
+  logger({
+    Message: message.text,
+    Channel: channel,
+    UUID: uuid,
+  });
+};
+
+const addStatus = ({ uuid, admin, app, event }) => {
+  logger({
+    Status: event,
+    App: app,
+    Admin: admin,
+    UUID: uuid,
+  });
+};
+
+const addPresence = ({ uuid, admin, app, event }) => {
+  logger({
+    Presence: event,
+    App: app,
+    Admin: admin,
+    UUID: uuid,
+  });
 };
 
 app.get("/", (req, res) => {
