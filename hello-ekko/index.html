@@ -33,17 +33,23 @@
       const ekko = new Ekko({
         host: "myEkkoServerEndpoint",
         jwt: "myAppJWT",
-        appName: "ekko-express",
+        appName: "ekko-hello",
         uuid: "myUniqueUUID",
       });
 
       ekko.subscribe({ channels: ["greeting"] });
       ekko.addListener({
         message: (ekkoEvent) => {
+          console.log("Message: ", ekkoEvent);
           addMessage(ekkoEvent);
         },
         status: (ekkoEvent) => {
-          addStatus(ekkoEvent.message);
+          console.log("Status: ", ekkoEvent);
+          addStatus(ekkoEvent);
+        },
+        presence: (ekkoEvent) => {
+          console.log("Presence: ", ekkoEvent);
+          addPresence(ekkoEvent);
         },
       });
 
@@ -80,6 +86,23 @@
             <dl>
               <dt>Event Type:</dt>
               <dd>Status</dd>
+              <dt>App Name:</dt>
+              <dd>${app}</dd>
+              <dt>Event Message:</dt>
+              <dd>${event}</dd>
+              
+            </dl>
+          </li>
+        `;
+        messages.innerHTML = messages.innerHTML + statusHTML;
+      };
+
+      const addPresence = ({ app, event }) => {
+        const statusHTML = `
+          <li>
+            <dl>
+              <dt>Event Type:</dt>
+              <dd>Presence</dd>
               <dt>App Name:</dt>
               <dd>${app}</dd>
               <dt>Event Message:</dt>
