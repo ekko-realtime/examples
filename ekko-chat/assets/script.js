@@ -14,9 +14,9 @@ const channelInfo = {
 
 // ekko Initialization
 const appName = "ekko-chat";
-const host = "!!!EnterHostEndpoint";
-const jwt = "!!!EnterJwtKey";
-const uuid = sessionStorage.getItem("uuid"); // Try to get uuid from browser session. ekko will asign a random one if none exists
+const host = "myEkkoServerEndpoint";
+const jwt = "myAppJWT";
+const uuid = sessionStorage.getItem("uuid") || "myUniqueUUID"; // Try to get uuid from browser session. ekko will asign a random one if none exists
 const ekko = new Ekko({ appName, host, jwt, uuid });
 
 ekko.subscribe({ channels: [...channelNames, "emoji"] });
